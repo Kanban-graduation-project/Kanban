@@ -1,0 +1,24 @@
+/* padding, margin  ,header,footer*/
+
+.content {
+    width: 100%;
+    height: fit-content;
+}
+@media (min-width: 768px) {
+    .content {
+        width: 75%;
+        
+    }
+}
+
+main {
+    padding: 4%;
+}
+
+ul button {
+   
+    padding: 15px 30px;
+    border-top-right-radius: 50px !important;
+    border-bottom-right-radius: 50px !important;
+    
+}

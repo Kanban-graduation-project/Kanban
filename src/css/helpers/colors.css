@@ -1,0 +1,74 @@
+/* colors.css */
+
+:root {
+    --primary-color: #21253b;
+    --secondary-color: #8f9bab;
+    --secondary-dark-color: #4C4D5A;
+    --background-light-color: #F4F7FD;
+    --background-dark-color: #21212D;
+    --aside-dark-color: #2C2C38;
+    --purple-color: #635fc7;
+    --white-color: #ffffff;
+    --delete-color: #f29898;
+    --todo-color: #45C2E4;
+    --doing-color: #8370ED;
+    --done-color: #6DDDB0;
+}
+
+/* Text colors */
+.text-primary {
+    color: var(--primary-color)
+}
+
+.text-white {
+    color: var(--white-color);
+}
+
+.text-secondary {
+    color: var(--secondary-color);
+}
+
+.text-secondary-dark {
+    color: var(--secondary-dark-color);
+}
+
+.text-delete {
+    color: var(--delete-color);
+}
+
+
+/* Background colors */
+.bg-lavender {
+    background-color: var(--background-light-color);
+}
+
+.bg-white {
+    background-color: var(--white-color);
+}
+.bg-dark {
+    background-color: var(--background-dark-color);
+}
+
+.bg-aside-light, .bg-header-light {
+    background-color: var(--white-color);
+}
+
+.bg-aside-dark, .bg-header-dark {
+    background-color: var(--aside-dark-color);
+}
+
+.bg-purple {
+    background-color: var(--purple-color);
+}
+
+.bg-todo {
+    background-color: var(--);
+}
+
+.bg-doing {
+    background-color: var(--doing-color);
+}
+
+.bg-done {
+    background-color: var(--done-color);
+}
