@@ -1,8 +1,11 @@
-// Initialize Tasks and LocalStorage
+// Initialize tasks from localStorage (if present), otherwise create an empty array
 let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-let selectedTaskIndex = null;
 
-// Get elements from HTML
+const addTaskBtn = document.getElementById('addTaskBtn');
+const addTaskModal = document.getElementById('addTaskModal');
+const closeBtn = document.querySelector(".close");
+const createTaskBtn = document.getElementById("createTaskBtn");
+
 const todoTasks = document.getElementById("todoTasks");
 const inProgressTasks = document.getElementById("inProgressTasks");
 const completedTasks = document.getElementById("completedTasks");
@@ -11,16 +14,26 @@ const todoCount = document.getElementById("todoCount");
 const inProgressCount = document.getElementById("inProgressCount");
 const completedCount = document.getElementById("completedCount");
 
-const taskModal = document.getElementById("taskModal");
-const addTaskModal = document.getElementById("addTaskModal");
-const taskTitle = document.getElementById("taskTitle");
-const taskDescription = document.getElementById("taskDescription");
-const statusSelect = document.getElementById("status");
-const addTaskBtn = document.getElementById("addTaskBtn");
-const createTaskBtn = document.getElementById("createTaskBtn");
+addTaskBtn.addEventListener('click', function () {
+    addTaskModal.style.display = 'flex';
+});
+
+// Close modal when clicking outside or on a close button
+window.onclick = function(event) {
+    if (event.target === addTaskModal) {
+        addTaskModal.style.display = 'none';
+    }
+};
+
+
 // Opening the Add Task modal
 addTaskBtn.addEventListener("click", () => {
     addTaskModal.style.display = "flex";
+});
+
+// Close modal when clicking on 'X'
+closeBtn.addEventListener("click", () => {
+    addTaskModal.style.display = "none";
 });
 
 // Create a new task
@@ -32,23 +45,28 @@ createTaskBtn.addEventListener("click", () => {
         const newTask = {
             name: taskName,
             description: taskDescription,
-            status: "Todo",
-            subtasks: [],
+            status: "Todo", // All new tasks are added to "To Do"
         };
 
         tasks.push(newTask);
-        updateLocalStorage();
-        renderTasks();
-        closeModals();
+        updateLocalStorage(); // Save the new task to localStorage
+        renderTasks(); // Re-render tasks to display the new task
+        closeModals(); // Close the modal after adding the task
     }
 });
 
-// Save tasks to localStorage
+// Function to close all modals
+function closeModals() {
+    addTaskModal.style.display = "none";
+    document.getElementById('editModal').style.display = "none"; // If you have an edit modal
+}
+
+// Function to save tasks to localStorage
 function updateLocalStorage() {
     localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
-// Render tasks to the page
+// Function to render tasks
 function renderTasks() {
     todoTasks.innerHTML = "";
     inProgressTasks.innerHTML = "";
@@ -63,7 +81,7 @@ function renderTasks() {
         taskCard.classList.add("task-card");
         taskCard.innerHTML = `
             <h3>${task.name}</h3>
-            <p>${task.subtasks.length} subtasks</p>
+            
         `;
         taskCard.addEventListener("click", () => openTaskModal(index));
 
@@ -83,54 +101,72 @@ function renderTasks() {
     inProgressCount.textContent = inProgressCountValue;
     completedCount.textContent = completedCountValue;
 }
-
-// Open task details modal with options menu
-function openTaskModal(index) {
-    selectedTaskIndex = index;
-    const task = tasks[index];
-
-    taskTitle.textContent = task.name;
-    taskDescription.textContent = task.description;
-    statusSelect.value = task.status;
-
-    taskModal.style.display = "flex";
-
-}
-
-
-
-// Save edited task
-function saveChanges() {
-    const newTitle = editTitleInput.value;
-    const newDescription = editDescriptionInput.value;
-
-    tasks[selectedTaskIndex].name = newTitle;
-    tasks[selectedTaskIndex].description = newDescription;
-
-    updateLocalStorage();
-    renderTasks();
-    closeModals();
-}
-
-// Delete task
-function deleteTask() {
-    tasks.splice(selectedTaskIndex, 1);
-    updateLocalStorage();
-    renderTasks();
-    closeModals();
-}
-
-// Close modals
+ 
+document.addEventListener('DOMContentLoaded', () => {
+    const taskDetailsModal = document.getElementById('taskDetails');
+    const closeModal = document.querySelector('.close');
+    const statusSelect = document.getElementById('status');
+    const saveStatusButton = document.getElementById('saveStatus');
+  
+    // Example tasks
+    const tasks = [
+      { id: 1, title: 'Task 1', description: 'Description for Task 1', status: 'todo' },
+      { id: 2, title: 'Task 2', description: 'Description for Task 2', status: 'inprogress' },
+      { id: 3, title: 'Task 3', description: 'Description for Task 3', status: 'completed' }
+    ];
+  
+    function renderTasks() {
+      // Clear existing tasks
+      document.querySelectorAll('.column').forEach(column => column.innerHTML = '<h2>' + column.id.charAt(0).toUpperCase() + column.id.slice(1) + '</h2>');
+  
+      tasks.forEach(task => {
+        const taskElement = document.createElement('div');
+        taskElement.className = 'task';
+        taskElement.innerText = task.title;
+        taskElement.dataset.id = task.id;
+        document.getElementById(task.status).appendChild(taskElement);
+  
+        taskElement.addEventListener('click', () => showTaskDetails(task));
+      });
+    }
+  
+    function showTaskDetails(task) {
+      document.getElementById('taskTitle').innerText = task.title;
+      document.getElementById('taskDescription').innerText = task.description;
+      statusSelect.value = task.status;
+  
+      taskDetailsModal.style.display = 'block';
+  
+      saveStatusButton.onclick = () => {
+        const newStatus = statusSelect.value;
+        task.status = newStatus;
+        renderTasks(); // Re-render tasks
+        closeTaskDetails();
+      };
+    }
+  
+    function closeTaskDetails() {
+      taskDetailsModal.style.display = 'none';
+    }
+  
+    closeModal.onclick = closeTaskDetails;
+  
+    window.onclick = (event) => {
+      if (event.target === taskDetailsModal) {
+        closeTaskDetails();
+      }
+    };
+  
+    renderTasks(); // Initial render of tasks
+  });
+  
+// Close modal
 function closeModals() {
-    taskModal.style.display = "none";
     addTaskModal.style.display = "none";
-    document.getElementById('editModal').style.display = "none";
 }
 
-// Close all modals when clicking close button
-document.querySelectorAll(".close").forEach(closeBtn => {
-    closeBtn.addEventListener("click", closeModals);
+// Initial render of tasks (when the page loads)
+document.addEventListener("DOMContentLoaded", () => {
+renderTasks();
 });
 
-// Initial render
-renderTasks();

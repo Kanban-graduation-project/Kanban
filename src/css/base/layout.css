@@ -31,44 +31,73 @@ button {
     border-radius: 5px;
     cursor: pointer;
 }
+body {
+    font-family: Arial, sans-serif;
+}
+
 .kanban-board {
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
+    padding: 20px;
+    margin: 0 auto;
+    gap: 20px; /* Add some space between columns */
+    max-width: 1200px; /* Limit the max width of the container */
 }
 
 .kanban-column {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 15px;
     width: 30%;
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    flex: 1;
+    min-width: 250px; 
 }
 
 .kanban-column h2 {
-    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    font-weight: bold;
 }
 
 .task-list {
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    min-height: 150px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.task-card {
-    padding: 15px;
-    background-color: #f0f0f5;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+#addTaskBtn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #5a67d8;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
     cursor: pointer;
+    font-size: 1rem;
+    text-align: center;
 }
 
-.modal {
+#addTaskBtn:hover {
+    background-color: #434190;
+}
+
+#addTaskModal {
     display: none;
+    /* Modal styles */
+}
+
+/* Modal container */
+.modal {
+    display: none; /* Hidden by default */
     position: fixed;
-    top: 0;
+    z-index: 1;
     left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
@@ -76,26 +105,95 @@ button {
     align-items: center;
 }
 
+/* Modal content box */
 .modal-content {
     background-color: white;
     padding: 20px;
-    border-radius: 10px;
-    width: 400px;
+    border-radius: 8px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
 }
 
+/* Close button (X) */
 .close {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    right: 15px;
+    top: 15px;
     cursor: pointer;
+    font-size: 1.5rem;
 }
 
-/* Edit icon */
-.edit-icon {
-    position: absolute; /* Position it relative to the modal-content */
-    top: 10px; /* Space from the top */
-    right: 10px; /* Space from the right */
-    cursor: pointer; /* Pointer cursor on hover */
-    font-size: 24px; /* Adjust size as needed */
+/* Form inputs inside the modal */
+.modal-content input, .modal-content textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
+/* Basic styling for the Kanban board */
+#kanban {
+    display: flex;
+  }
+  
+  .column {
+    width: 30%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin: 10px;
+    min-height: 400px;
+    background-color: #f9f9f9;
+  }
+  
+  .task {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  
+  .task:hover {
+    background-color: #e0e0e0;
+  }
+  
+  /* Styling for the task details modal */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    max-width: 600px;
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
