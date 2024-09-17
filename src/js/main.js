@@ -18,6 +18,8 @@ const completedCount = document.getElementById("completedCount");
 const LI_ELEMENTS = document.querySelectorAll(".li");
 const MENU_BOARDS = document.getElementById("menuBoards")
 const ADD_MENU_BOARDS = document.getElementById("addMenuBoards")
+const MENU_BOARDS_CONTAINER = document.getElementById("menuBoardsContainer")
+
 
 const DELETE = document.getElementById("delete")
 const Dots = document.getElementById("dots")
@@ -56,7 +58,7 @@ function deleteTask() {
 
 // Opening the Menu Boards
 ADD_MENU_BOARDS.addEventListener("click", () => {
-    MENU_BOARDS.style.display = "flex";
+    MENU_BOARDS_CONTAINER.style.display = "flex";
   });
   
 // Close modal when clicking outside or on the close button
@@ -64,10 +66,15 @@ window.onclick = function(event) {
     if (event.target === addTaskModal) {
         addTaskModal.style.display = 'none';
     }
+    if (event.target === MENU_BOARDS_CONTAINER) {
+        MENU_BOARDS_CONTAINER.style.display = "none";
+    }
 };
 
 closeBtn.addEventListener("click", () => {
     addTaskModal.style.display = "none";
+    
+
 });
 
 // Create a new task
