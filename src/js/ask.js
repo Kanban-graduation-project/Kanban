@@ -22,22 +22,10 @@ const ADD_MENU_BOARDS = document.getElementById("addMenuBoards")
 const DELETE = document.getElementById("delete")
 const Dots = document.getElementById("dots")
 
-const QUESTION = document.getElementById("question")
-const QUESTION_FIRST = document.getElementById("questionfirst")
-
-
-
+const editButton = document.getElementById('editButton');
 
 Dots.addEventListener('click', function () {
     DELETE.style.display = 'flex';
-    DELETE.style.flexDirection= 'column'
-
-});
-
-DELETE.addEventListener('click', function () {
-    QUESTION.style.display = 'flex';
-    QUESTION.style.flexDirection= 'column'
-
 });
 
 // Open add task modal
@@ -51,7 +39,6 @@ function deleteTask() {
     updateLocalStorage();
     renderTasks();
     closeModals();
-    
 }
 
 // Opening the Menu Boards
@@ -131,7 +118,9 @@ function renderTasks() {
 // Open Task Details modal and update task status
 function openTaskModal(index) {
     const task = tasks[index];
+    // here//
     selectedTaskIndex = index; // Store the index of the selected task
+    //done//
 
     document.getElementById('taskTitle').innerText = task.name;
     document.getElementById('taskDescription').innerText = task.description;
@@ -150,21 +139,52 @@ function openTaskModal(index) {
         taskDetailsModal.style.display = 'none';
     };
 }
+//HEREE
+// Open Task Details modal for editing
+function openTaskModal(index) {
+    const task = tasks[index];
+    selectedTaskIndex = index; // Store the index of the selected task
 
+    document.getElementById('taskTitle').innerText = task.name;
+    document.getElementById('taskDescription').innerText = task.description;
+
+    const statusSelect = document.getElementById('status');
+    statusSelect.value = task.status;
+
+    const taskDetailsModal = document.getElementById('taskDetails');
+    taskDetailsModal.style.display = 'flex';
+}
+// Add event listener to the Edit button
+
+editButton.addEventListener('click',   
+() => { console.log("Edit button clicked!");
+    const newTaskName = document.getElementById('taskTitle').value;
+    const newTaskDescription = document.getElementById('taskDescription').value;
+    const newTaskStatus = document.getElementById('status').value;
+
+    if (newTaskName && newTaskDescription) {
+        tasks[selectedTaskIndex] = {
+            name: newTaskName,
+            description: newTaskDescription,
+            status: newTaskStatus
+        };
+        updateLocalStorage();
+        renderTasks();
+        closeModals();
+    }
+});
+
+//DONE
+
+// here//
 // Function to delete a task
 function deleteTask() {
     tasks.splice(selectedTaskIndex, 1); // Remove the task from the array
     updateLocalStorage();
     renderTasks();
     closeModals();
-    
 }
-
-function removeModal() {
-    QUESTION_FIRST.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
-    QUESTION.style.backgroundColor= '#fff'
-}
-
+//done//
 
 // Close all modals
 function closeModals() {

@@ -4,10 +4,11 @@
     width: 100%;
     height: fit-content;
 }
+
 @media (min-width: 768px) {
     .content {
         width: 75%;
-        
+
     }
 }
 
@@ -15,10 +16,436 @@ main {
     padding: 4%;
 }
 
-ul button {
+.active {
+    background-color: var(--purple-color);
+
+}
+
+.li svg {
+    fill: #828FA3;
+}
+
+.active svg {
+    fill: var(--white-color) !important;
+}
+
+.active a {
+    color: var(--white-color) !important;
+}
+
+
+/* a {
+    background-color: #ffffff;
+   
+} */
+
+/* ul button {
    
     padding: 15px 30px;
     border-top-right-radius: 50px !important;
     border-bottom-right-radius: 50px !important;
     
+} */
+.boards-lists li:focus {
+    background-color: var(--purple-color);
+}
+
+
+
+.create-task-btn,
+#saveStatus {
+    padding: 10px 20px;
+    background-color: #6a67ce;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    height: 20%;
+}
+
+
+header {
+    position: relative;
+}
+
+.menu-boards {
+    display: none;
+    position: absolute;
+    background-color: var(--white-color);
+    padding-right: 1.5em;
+    border-radius: 2px;
+    top: 130%;
+    left: 20%;
+
+
+
+
+}
+
+.delete,
+.question {
+    display: none;
+    position: absolute;
+    background-color: var(--white-color);
+    padding-right: 1.5em;
+    border-radius: 2px;
+    top: 20%;
+    left: 75%;
+    width: 40%;
+    height: 40%;
+    border-radius: 5px;
+
+}
+
+/* .question {
+    background-color: var(--white-color);
+    padding-right: 1.5em;
+    border-radius: 2px;
+} */
+
+
+.kanban-board {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px 20px 20px;
+    margin: 0 auto;
+    gap: 20px;
+    /* Add some space between columns */
+    max-width: 1200px;
+    /* Limit the max width of the container */
+}
+
+.kanban-column {
+
+    /* padding: 15px; */
+    width: 30%;
+
+    text-align: center;
+    flex: 1;
+    min-width: 250px;
+}
+
+.kanban-column h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+
+
+#addTaskBtn:hover {
+    background-color: #434190;
+}
+
+#addTaskModal {
+    display: none;
+    /* Modal styles */
+}
+
+/* Modal container */
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+/* .question {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 40%;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    justify-content: center;
+    align-items: center;
+}
+.questionfirst {
+    z-index: 1;
+    /* background-color: rgba(0, 0, 0, 0.5); */
+/* display: none; 
+
+} */
+
+
+
+/* Modal content box */
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+/* Close button (X) */
+.close {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+/* Form inputs inside the modal */
+.modal-content input,
+.modal-content textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Basic styling for the Kanban board */
+#kanban {
+    display: flex;
+}
+
+.column {
+    width: 30%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin: 10px;
+    min-height: 400px;
+    background-color: #f9f9f9;
+}
+
+.task {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.task:hover {
+    background-color: #e0e0e0;
+}
+
+/* Styling for the task details modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    max-width: 600px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* ............... */
+
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+
+.board {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.column {
+    width: 30%;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.column h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.task-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.task-card {
+    background-color: var(--white-color);
+    border: 2px solid #fff;
+
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-bottom: 1em;
+
+}
+
+.task-card:hover {
+    background-color: #d1d6de;
+}
+
+.modal,
+.question {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+}
+
+.close {
+    float: right;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .board {
+        flex-direction: column;
+    }
+
+
+    .column {
+        min-height: auto;
+        margin-bottom: 15px;
+    }
+
+    .modal-content {
+        width: 70%;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 20px;
+    }
+
+    button {
+        font-size: 20px;
+        width: 30px;
+        height: 30px;
+    }
+
+    .modal-content {
+        width: 80%;
+    }
+
+    .delete {
+        width: 35%;
+    }
+}
+
+
+.column-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.status-circle {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.todo {
+    background-color: var(--todo-color);
+}
+
+.doing {
+    background-color: var(--doing-color);
+}
+
+.done {
+    background-color: var(--done-color);
+}
+
+.add-menu-boards,
+.dots,
+.edit-button,
+.delet-btn {
+    background-color: #fff;
+}
+
+.question {
+    display: none;
+
+}
+
+#status {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='7'%3E%3Cpath stroke='%23635FC7' stroke-width='2' fill='none' d='M1 1l4 4 4-4'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 10px 7px;
 }
