@@ -12,6 +12,12 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/styles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+        rel="stylesheet">
+
 </head>
 
 <body>
@@ -94,7 +100,7 @@
                         </svg>
 
                         <!-- Icon for boards -->
-                        <button id="addMenuBoards">
+                        <button class="add-menu-boards" id="addMenuBoards">
                             <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke="#635FC7" stroke-width="2" fill="none" d="m1 1 4 4 4-4" />
                             </svg>
@@ -223,15 +229,21 @@
                 </div> -->
                 <div class="kanban-board">
                     <div class="kanban-column" id="todo">
-                        <h2>Todo (<span id="todoCount">0</span>)</h2>
+                        <h2 class="column-header text-secondary fs-5"> <span class="status-circle todo"></span>Todo
+                            (<span id="todoCount">0</span>)</h2>
+
                         <div id="todoTasks" class="task-container"></div>
                     </div>
                     <div class="kanban-column" id="inProgress">
-                        <h2>Doing (<span id="inProgressCount">0</span>)</h2>
+                        <h2 class="column-header text-secondary fs-5"> <span class="status-circle doing"></span>Doing
+                            (<span id="inProgressCount">0</span>)</h2>
+
                         <div id="inProgressTasks" class="task-container"></div>
                     </div>
                     <div class="kanban-column" id="completed">
-                        <h2>Done (<span id="completedCount">0</span>)</h2>
+                        <h2 class="column-header text-secondary fs-5"> <span class="status-circle done"></span>Done
+                            (<span id="completedCount">0</span>)</h2>
+
                         <div id="completedTasks" class="task-container"></div>
                     </div>
                 </div>
@@ -243,16 +255,43 @@
                         <h3>Add New Task</h3>
                         <input type="text" id="newTaskName" placeholder="Task Name">
                         <textarea id="newTaskDescription" placeholder="Task Description"></textarea>
-                        <button id="createTaskBtn" class="create-task-btn">Create Task</button>
+                        <button id="createTaskBtn" class="create-task-btn  mt-4">Create Task</button>
                     </div>
                 </div>
 
                 <!-- Task Details Modal -->
-                <div id="taskDetails" class="modal">
+                <div id="taskDetails" class="modal ">
                     <div class="modal-content">
-                        <span class="close">&times;</span>
-                        <h3 id="taskTitle"></h3>
-                        <p id="taskDescription"></p>
+                        <!-- <span class="close">&times;</span> -->
+                        <button class="close dots" id="dots">
+                            <svg width="5" height="20" xmlns="http://www.w3.org/2000/svg">
+                                <g fill="#828FA3" fill-rule="evenodd">
+                                    <circle cx="2.308" cy="2.308" r="2.308" />
+                                    <circle cx="2.308" cy="10" r="2.308" />
+                                    <circle cx="2.308" cy="17.692" r="2.308" />
+                                </g>
+                            </svg>
+                        </button>
+                        <div class="delete  " id="delete">
+                            <button class="ms-3 py-2 edit-button" id="editButton">Edit </button>
+                            <button class="text-delete ms-3 delet-btn " onclick="removeModal">Delete </button>
+
+                        </div>
+                        <div class="questionfirst ">
+                            <div class="">
+                            <div class="question " id="question">
+                                <p>Do you want to delete this Task!</p>
+                                <div>
+                                    <button onclick="deleteTask()">Delete</button>
+                                    <button>Cancel</button>
+                                </div>
+
+                            </div>
+                        </div>
+                        </div>
+
+                        <h3 class="mb-3" id="taskTitle"></h3>
+                        <p class="mb-3" id="taskDescription"></p>
                         <label for="status">Change Status:</label>
                         <select id="status">
                             <option value="Todo">Todo</option>
