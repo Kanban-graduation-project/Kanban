@@ -18,6 +18,8 @@ const completedCount = document.getElementById("completedCount");
 const LI_ELEMENTS = document.querySelectorAll(".li");
 const MENU_BOARDS = document.getElementById("menuBoards")
 const ADD_MENU_BOARDS = document.getElementById("addMenuBoards")
+const MENU_BOARDS_CONTAINER = document.getElementById("menuBoardsContainer")
+
 
 const DELETE = document.getElementById("delete")
 const Dots = document.getElementById("dots")
@@ -25,8 +27,16 @@ const Dots = document.getElementById("dots")
 const QUESTION = document.getElementById("question")
 const QUESTION_FIRST = document.getElementById("questionfirst")
 
+const CANCEL_DELETE =document.getElementById("cancelDelete")
+
+const EDIT_BTN = document.getElementById("editButton")
 
 
+CANCEL_DELETE.addEventListener('click', function () {
+    QUESTION_FIRST.style.display = 'none';
+    DELETE.style.display = 'none';
+
+});
 
 Dots.addEventListener('click', function () {
     DELETE.style.display = 'flex';
@@ -35,8 +45,8 @@ Dots.addEventListener('click', function () {
 });
 
 DELETE.addEventListener('click', function () {
-    QUESTION.style.display = 'flex';
-    QUESTION.style.flexDirection= 'column'
+    QUESTION_FIRST.style.display = 'flex';
+    QUESTION_FIRST.style.flexDirection= 'column'
 
 });
 
@@ -53,10 +63,21 @@ function deleteTask() {
     closeModals();
     
 }
+let isFirstClick = true
 
 // Opening the Menu Boards
 ADD_MENU_BOARDS.addEventListener("click", () => {
-    MENU_BOARDS.style.display = "flex";
+    MENU_BOARDS_CONTAINER.style.display = "flex";
+    if(isFirstClick){
+ADD_MENU_BOARDS.style.transform ='rotate(180deg)'
+isFirstClick=false
+    }
+    else {
+        ADD_MENU_BOARDS.style.transform ='rotate(0deg)'
+        isFirstClick = true
+        MENU_BOARDS_CONTAINER.style.display = "none";
+    }
+
   });
   
 // Close modal when clicking outside or on the close button
@@ -64,10 +85,20 @@ window.onclick = function(event) {
     if (event.target === addTaskModal) {
         addTaskModal.style.display = 'none';
     }
+    if (event.target === MENU_BOARDS_CONTAINER) {
+        MENU_BOARDS_CONTAINER.style.display = "none";
+        ADD_MENU_BOARDS.style.transform ='rotate(0deg)'
+        
+    }
+    if (event.target === document.getElementById('taskDetails')){
+        document.getElementById('taskDetails').style.display = 'none';
+    }
 };
 
 closeBtn.addEventListener("click", () => {
     addTaskModal.style.display = "none";
+    
+
 });
 
 // Create a new task
