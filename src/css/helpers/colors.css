@@ -35,6 +35,9 @@
 .text-delete {
     color: var(--delete-color);
 }
+.text-purple {
+    color: var(--purple-color);
+}
 
 
 /* Background colors */
@@ -62,7 +65,7 @@
 }
 
 .bg-todo {
-    background-color: var(--);
+    background-color: var(--todo-color);
 }
 
 .bg-doing {

@@ -34,16 +34,44 @@
             </div>
 
             <!-- Boards -->
-            <h2>ALL BOARDS</h2>
+            <h2 class="mt-4 ms-4 mb-3 text-secondary-dark">ALL BOARDS</h2>
 
-            <!-- <nav>
-                <ul class="">
-                    <li><button class="py-2 rounded-end-circle bg-purple "><a href="home.html">Platform Launch</a></button></li>
-                    <li><a href=""></a>Marketing Plan</li>
-                    <li><a href=""></a>Roadmap</li>
-                    <li><a href=""></a>+ Create New Board</li>
-                </ul>
-             </nav> -->
+
+            <ul class="boards-lists">
+                <li class="li ps-4 py-2 me-3 mb-3 rounded-end-pill active">
+                    <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M0 2.889A2.889 2.889 0 0 1 2.889 0H13.11A2.889 2.889 0 0 1 16 2.889V13.11A2.888 2.888 0 0 1 13.111 16H2.89A2.889 2.889 0 0 1 0 13.111V2.89Zm1.333 5.555v4.667c0 .859.697 1.556 1.556 1.556h6.889V8.444H1.333Zm8.445-1.333V1.333h-6.89A1.556 1.556 0 0 0 1.334 2.89V7.11h8.445Zm4.889-1.333H11.11v4.444h3.556V5.778Zm0 5.778H11.11v3.11h2a1.556 1.556 0 0 0 1.556-1.555v-1.555Zm0-7.112V2.89a1.555 1.555 0 0 0-1.556-1.556h-2v3.111h3.556Z" />
+                    </svg>
+                    <!-- py-2 rounded-end-circle bg-purple -->
+                    <a class="ms-2 text-secondary-dark" href="home.html">Platform Launch</a>
+
+                </li>
+                <li class="li ps-4 py-2 me-3 mb-3 rounded-end-pill">
+                    <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M0 2.889A2.889 2.889 0 0 1 2.889 0H13.11A2.889 2.889 0 0 1 16 2.889V13.11A2.888 2.888 0 0 1 13.111 16H2.89A2.889 2.889 0 0 1 0 13.111V2.89Zm1.333 5.555v4.667c0 .859.697 1.556 1.556 1.556h6.889V8.444H1.333Zm8.445-1.333V1.333h-6.89A1.556 1.556 0 0 0 1.334 2.89V7.11h8.445Zm4.889-1.333H11.11v4.444h3.556V5.778Zm0 5.778H11.11v3.11h2a1.556 1.556 0 0 0 1.556-1.555v-1.555Zm0-7.112V2.89a1.555 1.555 0 0 0-1.556-1.556h-2v3.111h3.556Z" />
+                    </svg>
+                    <a class="ms-2 text-secondary-dark" href="#">Marketing Plan</a>
+                </li>
+                </li>
+                <li class="li ps-4 py-2 me-3 mb-3 rounded-end-pill">
+                    <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M0 2.889A2.889 2.889 0 0 1 2.889 0H13.11A2.889 2.889 0 0 1 16 2.889V13.11A2.888 2.888 0 0 1 13.111 16H2.89A2.889 2.889 0 0 1 0 13.111V2.89Zm1.333 5.555v4.667c0 .859.697 1.556 1.556 1.556h6.889V8.444H1.333Zm8.445-1.333V1.333h-6.89A1.556 1.556 0 0 0 1.334 2.89V7.11h8.445Zm4.889-1.333H11.11v4.444h3.556V5.778Zm0 5.778H11.11v3.11h2a1.556 1.556 0 0 0 1.556-1.555v-1.555Zm0-7.112V2.89a1.555 1.555 0 0 0-1.556-1.556h-2v3.111h3.556Z" />
+                    </svg>
+                    <a class="ms-2 text-secondary-dark" href="#">Roadmap</a>
+                </li>
+                <li class="ms-4">
+                    <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M0 2.889A2.889 2.889 0 0 1 2.889 0H13.11A2.889 2.889 0 0 1 16 2.889V13.11A2.888 2.888 0 0 1 13.111 16H2.89A2.889 2.889 0 0 1 0 13.111V2.89Zm1.333 5.555v4.667c0 .859.697 1.556 1.556 1.556h6.889V8.444H1.333Zm8.445-1.333V1.333h-6.89A1.556 1.556 0 0 0 1.334 2.89V7.11h8.445Zm4.889-1.333H11.11v4.444h3.556V5.778Zm0 5.778H11.11v3.11h2a1.556 1.556 0 0 0 1.556-1.555v-1.555Zm0-7.112V2.89a1.555 1.555 0 0 0-1.556-1.556h-2v3.111h3.556Z"
+                            fill="#828FA3" />
+                    </svg>
+                    <a class="ms-2 text-purple" href="#">+Create New Board</a>
+                </li>
+            </ul>
+
         </aside>
 
 
@@ -66,9 +94,55 @@
                         </svg>
 
                         <!-- Icon for boards -->
-                        <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke="#635FC7" stroke-width="2" fill="none" d="m1 1 4 4 4-4" />
-                        </svg>
+                        <button id="addMenuBoards">
+                            <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke="#635FC7" stroke-width="2" fill="none" d="m1 1 4 4 4-4" />
+                            </svg>
+                        </button>
+
+
+                    </div>
+
+                    <!-- Menu Boarsds -->
+
+                    <div class="menu-boards" id="menuBoards">
+                        <div class="d-flex flex-column">
+                            <h2 class="mt-4 ms-4 mb-3 text-secondary-dark">ALL BOARDS (3)</h2>
+                            <ul class="boards-lists">
+                                <li class="li ps-4 py-2 px-3 me-2 mb-2 rounded-end-pill active">
+                                    <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M0 2.889A2.889 2.889 0 0 1 2.889 0H13.11A2.889 2.889 0 0 1 16 2.889V13.11A2.888 2.888 0 0 1 13.111 16H2.89A2.889 2.889 0 0 1 0 13.111V2.89Zm1.333 5.555v4.667c0 .859.697 1.556 1.556 1.556h6.889V8.444H1.333Zm8.445-1.333V1.333h-6.89A1.556 1.556 0 0 0 1.334 2.89V7.11h8.445Zm4.889-1.333H11.11v4.444h3.556V5.778Zm0 5.778H11.11v3.11h2a1.556 1.556 0 0 0 1.556-1.555v-1.555Zm0-7.112V2.89a1.555 1.555 0 0 0-1.556-1.556h-2v3.111h3.556Z" />
+                                    </svg>
+                                    <!-- py-2 rounded-end-circle bg-purple -->
+                                    <a class="ms-2 text-secondary-dark" href="home.html">Platform Launch</a>
+
+                                </li>
+                                <li class="li ps-4 py-2 px-3 me-2 mb-1 rounded-end-pill">
+                                    <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M0 2.889A2.889 2.889 0 0 1 2.889 0H13.11A2.889 2.889 0 0 1 16 2.889V13.11A2.888 2.888 0 0 1 13.111 16H2.89A2.889 2.889 0 0 1 0 13.111V2.89Zm1.333 5.555v4.667c0 .859.697 1.556 1.556 1.556h6.889V8.444H1.333Zm8.445-1.333V1.333h-6.89A1.556 1.556 0 0 0 1.334 2.89V7.11h8.445Zm4.889-1.333H11.11v4.444h3.556V5.778Zm0 5.778H11.11v3.11h2a1.556 1.556 0 0 0 1.556-1.555v-1.555Zm0-7.112V2.89a1.555 1.555 0 0 0-1.556-1.556h-2v3.111h3.556Z" />
+                                    </svg>
+                                    <a class="ms-2 text-secondary-dark" href="#">Marketing Plan</a>
+                                </li>
+                                </li>
+                                <li class="li ps-4 py-2 px-3 me-2 mb-1 rounded-end-pill">
+                                    <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M0 2.889A2.889 2.889 0 0 1 2.889 0H13.11A2.889 2.889 0 0 1 16 2.889V13.11A2.888 2.888 0 0 1 13.111 16H2.89A2.889 2.889 0 0 1 0 13.111V2.89Zm1.333 5.555v4.667c0 .859.697 1.556 1.556 1.556h6.889V8.444H1.333Zm8.445-1.333V1.333h-6.89A1.556 1.556 0 0 0 1.334 2.89V7.11h8.445Zm4.889-1.333H11.11v4.444h3.556V5.778Zm0 5.778H11.11v3.11h2a1.556 1.556 0 0 0 1.556-1.555v-1.555Zm0-7.112V2.89a1.555 1.555 0 0 0-1.556-1.556h-2v3.111h3.556Z" />
+                                    </svg>
+                                    <a class="ms-2 text-secondary-dark" href="#">Roadmap</a>
+                                </li>
+                                <li class="ps-4 py-2 px-3 me-2 pb-3">
+                                    <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M0 2.889A2.889 2.889 0 0 1 2.889 0H13.11A2.889 2.889 0 0 1 16 2.889V13.11A2.888 2.888 0 0 1 13.111 16H2.89A2.889 2.889 0 0 1 0 13.111V2.89Zm1.333 5.555v4.667c0 .859.697 1.556 1.556 1.556h6.889V8.444H1.333Zm8.445-1.333V1.333h-6.89A1.556 1.556 0 0 0 1.334 2.89V7.11h8.445Zm4.889-1.333H11.11v4.444h3.556V5.778Zm0 5.778H11.11v3.11h2a1.556 1.556 0 0 0 1.556-1.555v-1.555Zm0-7.112V2.89a1.555 1.555 0 0 0-1.556-1.556h-2v3.111h3.556Z"
+                                            fill="#828FA3" />
+                                    </svg>
+                                    <a class="ms-2 text-purple" href="#">+Create New Board</a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
 
                     <div class="d-none d-md-flex">
@@ -77,7 +151,8 @@
 
                     <div class="d-flex align-items-center gap-3">
                         <!-- Icon for create new task -->
-                        <button id="addTaskBtn" class="btn bg-purple rounded-pill d-flex align-items-center justify-content-center"
+                        <button id="addTaskBtn"
+                            class="btn bg-purple rounded-pill d-flex align-items-center justify-content-center"
                             style="min-width: 55px; min-height: 35px;">
 
                             <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg">
@@ -99,58 +174,104 @@
 
                 </div>
             </header>
-            <section class="kanban-board">
-                <div class="kanban-column">
-                    <h2>To Do (<span id="todoCount">0</span>)</h2>
-                    <div id="todoTasks" class="task-list"></div>
-                </div>
-            
-                <div class="kanban-column">
-                    <h2>In Progress (<span id="inProgressCount">0</span>)</h2>
-                    <div id="inProgressTasks" class="task-list"></div>
-                </div>
-            
-                <div class="kanban-column">
-                    <h2>Completed (<span id="completedCount">0</span>)</h2>
-                    <div id="completedTasks" class="task-list"></div>
-                </div>
-            </section>
+            <main class="bg-lavender overflow-auto" style="height: 100vh;">
+                <!-- <section class="kanban-board">
+                    <div class="kanban-column">
+                        <h2>To Do (<span id="todoCount">0</span>)</h2>
+                        <div id="todoTasks" class="task-list"></div>
+                    </div>
 
-            <div id="addTaskModal" class="modal">
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <h2>Add New Task</h2>
-                    <label for="taskName">Task Title:</label>
-                    <input type="text" id="newTaskName" placeholder="Enter task title">
+                    <div class="kanban-column">
+                        <h2>In Progress (<span id="inProgressCount">0</span>)</h2>
+                        <div id="inProgressTasks" class="task-list"></div>
+                    </div>
+
+                    <div class="kanban-column">
+                        <h2>Completed (<span id="completedCount">0</span>)</h2>
+                        <div id="completedTasks" class="task-list"></div>
+                    </div>
                     
-                    <label for="taskDescription">Task Description:</label>
-                    <textarea id="newTaskDescription" placeholder="Enter task description"></textarea>
-                    
-                    <button id="createTaskBtn" class="create-task-btn">Create Task</button>
+                </section>
+
+                <div id="addTaskModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h2>Add New Task</h2>
+                        <label for="taskName">Task Title:</label>
+                        <input type="text" id="newTaskName" placeholder="Enter task title">
+
+                        <label for="taskDescription">Task Description:</label>
+                        <textarea id="newTaskDescription" placeholder="Enter task description"></textarea>
+
+                        <button id="createTaskBtn" class="create-task-btn">Create Task</button>
+                    </div>
+                </div> -->
+                <!-- Task Details Modal -->
+                <!-- <div id="taskDetails" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h2 id="taskTitle"></h2>
+                        <p id="taskDescription"></p>
+                        <label for="status">Change Status:</label>
+                        <select id="status">
+                            <option value="todo">To Do</option>
+                            <option value="inprogress">In Progress</option>
+                            <option value="completed">Completed</option>
+                        </select>
+                        <button id="saveStatus">Save</button>
+                    </div>
+                </div> -->
+                <div class="kanban-board">
+                    <div class="kanban-column" id="todo">
+                        <h2>Todo (<span id="todoCount">0</span>)</h2>
+                        <div id="todoTasks" class="task-container"></div>
+                    </div>
+                    <div class="kanban-column" id="inProgress">
+                        <h2>Doing (<span id="inProgressCount">0</span>)</h2>
+                        <div id="inProgressTasks" class="task-container"></div>
+                    </div>
+                    <div class="kanban-column" id="completed">
+                        <h2>Done (<span id="completedCount">0</span>)</h2>
+                        <div id="completedTasks" class="task-container"></div>
+                    </div>
                 </div>
-            </div>
-            <!-- Task Details Modal -->
-  <div id="taskDetails" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2 id="taskTitle"></h2>
-      <p id="taskDescription"></p>
-      <label for="status">Change Status:</label>
-      <select id="status">
-        <option value="todo">To Do</option>
-        <option value="inprogress">In Progress</option>
-        <option value="completed">Completed</option>
-      </select>
-      <button id="saveStatus">Save</button>
-    </div>
-  </div>
-            
-            
-            
-            
+
+                <!-- Add Task Modal -->
+                <div id="addTaskModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h3>Add New Task</h3>
+                        <input type="text" id="newTaskName" placeholder="Task Name">
+                        <textarea id="newTaskDescription" placeholder="Task Description"></textarea>
+                        <button id="createTaskBtn" class="create-task-btn">Create Task</button>
+                    </div>
+                </div>
+
+                <!-- Task Details Modal -->
+                <div id="taskDetails" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h3 id="taskTitle"></h3>
+                        <p id="taskDescription"></p>
+                        <label for="status">Change Status:</label>
+                        <select id="status">
+                            <option value="Todo">Todo</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Completed">Completed</option>
+                        </select>
+                        <button id="saveStatus">Save</button>
+                    </div>
+                </div>
+
+            </main>
+
+
         </div>
 
     </div>
+
+
+
 
 
 
@@ -162,7 +283,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
-        <script src="C:\Users\USER\Downloads\Kanban-main11\Kanban-main\src\js\main.js"></script>
+    <script src="../js/main.js"></script>
 </body>
 
 </html>

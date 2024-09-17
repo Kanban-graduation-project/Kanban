@@ -1,6 +1,7 @@
-// Initialize tasks from localStorage (if present), otherwise create an empty array
+// Initialize tasks from localStorage or create an empty array
 let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
+// Select elements
 const addTaskBtn = document.getElementById('addTaskBtn');
 const addTaskModal = document.getElementById('addTaskModal');
 const closeBtn = document.querySelector(".close");
@@ -14,24 +15,27 @@ const todoCount = document.getElementById("todoCount");
 const inProgressCount = document.getElementById("inProgressCount");
 const completedCount = document.getElementById("completedCount");
 
+const LI_ELEMENTS = document.querySelectorAll(".li");
+const MENU_BOARDS = document.getElementById("menuBoards")
+const ADD_MENU_BOARDS = document.getElementById("addMenuBoards")
+
+// Open add task modal
 addTaskBtn.addEventListener('click', function () {
     addTaskModal.style.display = 'flex';
 });
 
-// Close modal when clicking outside or on a close button
+// Opening the Menu Boards
+ADD_MENU_BOARDS.addEventListener("click", () => {
+    MENU_BOARDS.style.display = "flex";
+  });
+  
+// Close modal when clicking outside or on the close button
 window.onclick = function(event) {
     if (event.target === addTaskModal) {
         addTaskModal.style.display = 'none';
     }
 };
 
-
-// Opening the Add Task modal
-addTaskBtn.addEventListener("click", () => {
-    addTaskModal.style.display = "flex";
-});
-
-// Close modal when clicking on 'X'
 closeBtn.addEventListener("click", () => {
     addTaskModal.style.display = "none";
 });
@@ -45,7 +49,7 @@ createTaskBtn.addEventListener("click", () => {
         const newTask = {
             name: taskName,
             description: taskDescription,
-            status: "Todo", // All new tasks are added to "To Do"
+            status: "Todo", // Default status is 'Todo'
         };
 
         tasks.push(newTask);
@@ -54,12 +58,6 @@ createTaskBtn.addEventListener("click", () => {
         closeModals(); // Close the modal after adding the task
     }
 });
-
-// Function to close all modals
-function closeModals() {
-    addTaskModal.style.display = "none";
-    document.getElementById('editModal').style.display = "none"; // If you have an edit modal
-}
 
 // Function to save tasks to localStorage
 function updateLocalStorage() {
@@ -79,10 +77,7 @@ function renderTasks() {
     tasks.forEach((task, index) => {
         const taskCard = document.createElement("div");
         taskCard.classList.add("task-card");
-        taskCard.innerHTML = `
-            <h3>${task.name}</h3>
-            
-        `;
+        taskCard.innerHTML = `<h3>${task.name}</h3>`;
         taskCard.addEventListener("click", () => openTaskModal(index));
 
         if (task.status === "Todo") {
@@ -90,6 +85,7 @@ function renderTasks() {
             todoCountValue++;
         } else if (task.status === "In Progress") {
             inProgressTasks.appendChild(taskCard);
+            console.log(inProgressTasks)
             inProgressCountValue++;
         } else if (task.status === "Completed") {
             completedTasks.appendChild(taskCard);
@@ -101,72 +97,43 @@ function renderTasks() {
     inProgressCount.textContent = inProgressCountValue;
     completedCount.textContent = completedCountValue;
 }
- 
-document.addEventListener('DOMContentLoaded', () => {
-    const taskDetailsModal = document.getElementById('taskDetails');
-    const closeModal = document.querySelector('.close');
+
+// Open Task Details modal and update task status
+function openTaskModal(index) {
+    const task = tasks[index];
+
+    document.getElementById('taskTitle').innerText = task.name;
+    document.getElementById('taskDescription').innerText = task.description;
+
     const statusSelect = document.getElementById('status');
+    statusSelect.value = task.status;
+
+    const taskDetailsModal = document.getElementById('taskDetails');
+    taskDetailsModal.style.display = 'flex';
+
     const saveStatusButton = document.getElementById('saveStatus');
-  
-    // Example tasks
-    const tasks = [
-      { id: 1, title: 'Task 1', description: 'Description for Task 1', status: 'todo' },
-      { id: 2, title: 'Task 2', description: 'Description for Task 2', status: 'inprogress' },
-      { id: 3, title: 'Task 3', description: 'Description for Task 3', status: 'completed' }
-    ];
-  
-    function renderTasks() {
-      // Clear existing tasks
-      document.querySelectorAll('.column').forEach(column => column.innerHTML = '<h2>' + column.id.charAt(0).toUpperCase() + column.id.slice(1) + '</h2>');
-  
-      tasks.forEach(task => {
-        const taskElement = document.createElement('div');
-        taskElement.className = 'task';
-        taskElement.innerText = task.title;
-        taskElement.dataset.id = task.id;
-        document.getElementById(task.status).appendChild(taskElement);
-  
-        taskElement.addEventListener('click', () => showTaskDetails(task));
-      });
-    }
-  
-    function showTaskDetails(task) {
-      document.getElementById('taskTitle').innerText = task.title;
-      document.getElementById('taskDescription').innerText = task.description;
-      statusSelect.value = task.status;
-  
-      taskDetailsModal.style.display = 'block';
-  
-      saveStatusButton.onclick = () => {
-        const newStatus = statusSelect.value;
-        task.status = newStatus;
-        renderTasks(); // Re-render tasks
-        closeTaskDetails();
-      };
-    }
-  
-    function closeTaskDetails() {
-      taskDetailsModal.style.display = 'none';
-    }
-  
-    closeModal.onclick = closeTaskDetails;
-  
-    window.onclick = (event) => {
-      if (event.target === taskDetailsModal) {
-        closeTaskDetails();
-      }
+    saveStatusButton.onclick = () => {
+        task.status = statusSelect.value;
+        updateLocalStorage();
+        renderTasks();
+        taskDetailsModal.style.display = 'none';
     };
-  
-    renderTasks(); // Initial render of tasks
-  });
-  
-// Close modal
-function closeModals() {
-    addTaskModal.style.display = "none";
 }
 
-// Initial render of tasks (when the page loads)
+// Close all modals
+function closeModals() {
+    addTaskModal.style.display = 'none';
+    document.getElementById('taskDetails').style.display = 'none'; // Close task details modal
+}
+
+// Initial render of tasks when the page loads
 document.addEventListener("DOMContentLoaded", () => {
-renderTasks();
+    renderTasks();
 });
 
+LI_ELEMENTS.forEach(LI_ELEMENT => {
+    LI_ELEMENT.addEventListener('click', function(){
+      LI_ELEMENTS.forEach(LI_ELEMENT => LI_ELEMENT.classList.remove('active'))
+      LI_ELEMENT.classList.add('active')
+    })
+  })
